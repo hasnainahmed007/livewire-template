@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\PasskeyUser;
 use Laravel\Fortify\PasskeyAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
@@ -33,7 +34,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, PasskeyAuthenticatable, TwoFactorAuthenticatable;
+    use HasFactory, HasRoles, Notifiable, PasskeyAuthenticatable, TwoFactorAuthenticatable;
 
     /**
      * Get the attributes that should be cast.
@@ -58,5 +59,34 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         return Str::length($initials) > 1
             ? Str::substr($initials, 0, 1).Str::substr($initials, -1)
             : $initials;
+    }
+
+    /**
+     * Resolve the dashboard route name for the user's role.
+     *
+     * Superadmin panel: superadmin, admin, manager.
+     * Tenant panel: owner.
+     */
+    public function dashboardRoute(): string
+    {
+        if ($this->hasAnyRole(['superadmin', 'admin', 'manager'])) {
+            return 'superadmin.dashboard';
+        }
+
+        if ($this->hasRole('owner')) {
+            return 'tenant.dashboard';
+        }
+
+        return 'dashboard';
+    }
+
+    public function belongsToSuperadminPanel(): bool
+    {
+        return $this->hasAnyRole(['superadmin', 'admin', 'manager']);
+    }
+
+    public function belongsToTenantPanel(): bool
+    {
+        return $this->hasRole('owner');
     }
 }

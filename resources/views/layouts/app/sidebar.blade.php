@@ -12,10 +12,42 @@
 
             <flux:sidebar.nav>
                 <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </flux:sidebar.item>
+                    @hasanyrole('superadmin|admin|manager')
+                        <flux:sidebar.item icon="home" :href="route('superadmin.dashboard')" :current="request()->routeIs('superadmin.dashboard')" wire:navigate>
+                            {{ __('Dashboard') }}
+                        </flux:sidebar.item>
+                    @endhasanyrole
+                    @role('owner')
+                        <flux:sidebar.item icon="home" :href="route('tenant.dashboard')" :current="request()->routeIs('tenant.dashboard')" wire:navigate>
+                            {{ __('Dashboard') }}
+                        </flux:sidebar.item>
+                    @endrole
+                    @if(auth()->user() && ! auth()->user()->hasAnyRole(['superadmin', 'admin', 'manager', 'owner']))
+                        <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                            {{ __('Dashboard') }}
+                        </flux:sidebar.item>
+                    @endif
                 </flux:sidebar.group>
+
+                @hasanyrole('superadmin|admin|manager')
+                    <flux:sidebar.group :heading="__('Management')" class="grid">
+                        @can('staff.read')
+                            <flux:sidebar.item icon="users" :href="route('superadmin.staff.index')" :current="request()->routeIs('superadmin.staff.*')" wire:navigate>
+                                {{ __('Staff') }}
+                            </flux:sidebar.item>
+                        @endcan
+                        @can('roles.read')
+                            <flux:sidebar.item icon="shield-check" :href="route('superadmin.roles.index')" :current="request()->routeIs('superadmin.roles.*')" wire:navigate>
+                                {{ __('Roles') }}
+                            </flux:sidebar.item>
+                        @endcan
+                        @can('permissions.read')
+                            <flux:sidebar.item icon="key" :href="route('superadmin.permissions.index')" :current="request()->routeIs('superadmin.permissions.*')" wire:navigate>
+                                {{ __('Permissions') }}
+                            </flux:sidebar.item>
+                        @endcan
+                    </flux:sidebar.group>
+                @endhasanyrole
             </flux:sidebar.nav>
 
             <flux:spacer />
