@@ -1,4 +1,4 @@
-<x-layouts::app :title="__('Tenant Dashboard')">
+<x-layouts::tenant :title="__('Tenant Dashboard')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
         <div class="flex items-center justify-between">
             <div>
@@ -20,4 +20,4 @@
             </div>
         </div>
     </div>
-</x-layouts::app>
+</x-layouts::tenant>

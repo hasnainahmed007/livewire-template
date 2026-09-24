@@ -1,4 +1,4 @@
-<x-layouts::app :title="__('Superadmin Dashboard')">
+<x-layouts::superadmin :title="__('Superadmin Dashboard')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
         <div class="flex items-center justify-between">
             <div>
@@ -16,18 +16,18 @@
             <flux:card>
                 <flux:heading>{{ __('Staff') }}</flux:heading>
                 <flux:text>{{ __('Manage admin and manager users.') }}</flux:text>
-                <flux:button variant="primary" :href="route('superadmin.staff.index')" class="mt-4">{{ __('View staff') }}</flux:button>
+                <flux:button variant="primary" :href="route('superadmin.staff.index')" wire:navigate class="mt-4">{{ __('View staff') }}</flux:button>
             </flux:card>
             <flux:card>
                 <flux:heading>{{ __('Roles') }}</flux:heading>
                 <flux:text>{{ __('Manage roles and their permissions.') }}</flux:text>
-                <flux:button variant="primary" :href="route('superadmin.roles.index')" class="mt-4">{{ __('View roles') }}</flux:button>
+                <flux:button variant="primary" :href="route('superadmin.roles.index')" wire:navigate class="mt-4">{{ __('View roles') }}</flux:button>
             </flux:card>
             <flux:card>
                 <flux:heading>{{ __('Permissions') }}</flux:heading>
                 <flux:text>{{ __('Assign roles to users.') }}</flux:text>
-                <flux:button variant="primary" :href="route('superadmin.permissions.index')" class="mt-4">{{ __('View permissions') }}</flux:button>
+                <flux:button variant="primary" :href="route('superadmin.permissions.index')" wire:navigate class="mt-4">{{ __('View permissions') }}</flux:button>
             </flux:card>
         </div>
     </div>
-</x-layouts::app>
+</x-layouts::superadmin>

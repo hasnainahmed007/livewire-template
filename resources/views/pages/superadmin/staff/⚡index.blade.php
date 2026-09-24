@@ -5,10 +5,11 @@ use Flux\Flux;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Staff')] class extends Component {
+new #[Title('Staff'), Layout('layouts::superadmin')] class extends Component {
     use AuthorizesRequests;
 
     public string $search = '';

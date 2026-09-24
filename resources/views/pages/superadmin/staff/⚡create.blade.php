@@ -6,11 +6,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
-new #[Title('Create Staff')] class extends Component {
+new #[Title('Create Staff'), Layout('layouts::superadmin')] class extends Component {
     use AuthorizesRequests;
 
     public string $name = '';
