@@ -37,9 +37,14 @@
             </flux:sidebar.nav>
 
             <flux:spacer />
-
-            <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
         </flux:sidebar>
+
+        <!-- Desktop Top Header -->
+        <flux:header sticky class="shadow-sm max-lg:hidden">
+            <flux:spacer />
+
+            <x-desktop-user-menu :name="auth()->user()->name" />
+        </flux:header>
 
         <!-- Mobile User Menu -->
         <flux:header class="lg:hidden">
