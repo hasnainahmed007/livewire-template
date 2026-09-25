@@ -1,5 +1,3 @@
 <x-layouts::superadmin.sidebar :title="$title ?? null">
-    <flux:main>
-        {{ $slot }}
-    </flux:main>
+    {{ $slot }}
 </x-layouts::superadmin.sidebar>

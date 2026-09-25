@@ -3,7 +3,7 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="tenant-shell min-h-screen bg-paper font-sans text-ink antialiased">
+    <body class="console-shell min-h-screen bg-paper font-sans text-ink antialiased">
         <a href="#tenant-main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:text-ink">
             {{ __('Skip to content') }}
         </a>

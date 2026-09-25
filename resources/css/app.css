@@ -77,13 +77,13 @@ select:focus[data-flux-control] {
 
 /* Tenant console (plan.md §5-6): visible keyboard focus everywhere,
    fast 120–150ms state changes, one deliberate inbox motion. */
-.tenant-shell :focus-visible {
+.console-shell :focus-visible {
     outline: 2px solid var(--color-brand);
     outline-offset: 2px;
 }
 
-.tenant-shell a,
-.tenant-shell button {
+.console-shell a,
+.console-shell button {
     transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
 }
 
@@ -103,9 +103,9 @@ select:focus[data-flux-control] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .tenant-shell *,
-    .tenant-shell *::before,
-    .tenant-shell *::after {
+    .console-shell *,
+    .console-shell *::before,
+    .console-shell *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
