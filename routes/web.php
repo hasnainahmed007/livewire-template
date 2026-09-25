@@ -1,7 +1,14 @@
 <?php
 
 use App\Http\Controllers\Superadmin\DashboardController as SuperadminDashboardController;
-use App\Http\Controllers\Tenant\DashboardController as TenantDashboardController;
+use App\Livewire\Tenant\Agents;
+use App\Livewire\Tenant\Billing;
+use App\Livewire\Tenant\Channels;
+use App\Livewire\Tenant\Contacts;
+use App\Livewire\Tenant\Dashboard as TenantDashboard;
+use App\Livewire\Tenant\Flows;
+use App\Livewire\Tenant\Inbox;
+use App\Livewire\Tenant\Settings;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
@@ -36,7 +43,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('tenant')->as('tenant.')->middleware('role:owner')->group(function () {
-        Route::get('dashboard', [TenantDashboardController::class, 'index'])->name('dashboard');
+        Route::livewire('dashboard', TenantDashboard::class)->name('dashboard');
+        Route::livewire('inbox', Inbox::class)->name('inbox');
+        Route::livewire('agents', Agents::class)->name('agents');
+        Route::livewire('flows', Flows::class)->name('flows');
+        Route::livewire('contacts', Contacts::class)->name('contacts');
+        Route::livewire('channels', Channels::class)->name('channels');
+        Route::livewire('billing', Billing::class)->name('billing');
+        Route::livewire('settings', Settings::class)->name('settings');
     });
 });
 

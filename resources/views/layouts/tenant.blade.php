@@ -1,5 +1,3 @@
 <x-layouts::tenant.sidebar :title="$title ?? null">
-    <flux:main>
-        {{ $slot }}
-    </flux:main>
+    {{ $slot }}
 </x-layouts::tenant.sidebar>
