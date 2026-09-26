@@ -86,11 +86,9 @@
             <div class="flex min-w-0 flex-1 flex-col">
                 {{-- Topbar: platform name and profile. Square, hairline border. --}}
                 <header class="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-line bg-surface px-4 lg:px-6">
-                    <p class="min-w-0 truncate text-sm font-medium">
-                        {{ __('Platform admin') }}
-                    </p>
-
                     <div class="ml-auto flex items-center gap-3">
+                        @include('partials.console-appearance-toggle')
+
                         <details class="relative">
                             <summary class="flex cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
                                 <span aria-hidden="true" class="flex size-8 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">{{ auth()->user()->initials() }}</span>

@@ -101,6 +101,8 @@
                     </div>
 
                     <div class="ml-auto flex items-center gap-3 md:ml-0">
+                        @include('partials.console-appearance-toggle')
+
                         <details class="relative">
                             <summary class="flex cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
                                 <span aria-hidden="true" class="flex size-8 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">{{ auth()->user()->initials() }}</span>
@@ -138,6 +140,12 @@
             </div>
         </div>
 
-        @livewireScripts
+        @persist('toast')
+            <flux:toast.group>
+                <flux:toast />
+            </flux:toast.group>
+        @endpersist
+
+        @fluxScripts
     </body>
 </html>

@@ -50,6 +50,21 @@
     }
 }
 
+/* Console dark mode. Every bg-paper / bg-surface / text-ink / border-line
+   utility reads these variables, so the whole console follows the toggle
+   with no per-class dark: variants. Flux components bring their own
+   dark: styles; .console-shell keeps their primary actions on brand. */
+.dark {
+    --color-paper: #141817;
+    --color-surface: #1e2421;
+    --color-ink: #e8eae8;
+    --color-line: #2d3330;
+    --color-success: #7ab894;
+    --color-error: #d68787;
+    --color-pending: #d3a356;
+    --color-live: #d67e4a;
+}
+
 @layer base {
 
     *,
