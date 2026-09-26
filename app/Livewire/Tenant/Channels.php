@@ -48,6 +48,6 @@ class Channels extends Component
 
     public function render()
     {
-        return view('livewire.tenant.channels');
+        return view('pages.tenant.channels');
     }
 }

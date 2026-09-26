@@ -73,7 +73,7 @@ class Contacts extends Component
             fn (array $row): bool => $row['contact_id'] === $this->selectedContactId
         ));
 
-        return view('livewire.tenant.contacts', [
+        return view('pages.tenant.contacts', [
             'visibleContacts' => $visible,
             'activeContact' => $active,
             'activeHistory' => $activeHistory,

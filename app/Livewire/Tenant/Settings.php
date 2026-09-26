@@ -69,6 +69,6 @@ class Settings extends Component
 
     public function render()
     {
-        return view('livewire.tenant.settings');
+        return view('pages.tenant.settings');
     }
 }

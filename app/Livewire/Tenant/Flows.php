@@ -67,6 +67,6 @@ class Flows extends Component
 
     public function render()
     {
-        return view('livewire.tenant.flows');
+        return view('pages.tenant.flows');
     }
 }

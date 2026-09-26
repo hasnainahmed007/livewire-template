@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
     public function index(): View
     {
-        return view('tenant.dashboard');
+        return view('pages.tenant.dashboard');
     }
 }

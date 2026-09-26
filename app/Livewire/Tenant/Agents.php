@@ -39,6 +39,6 @@ class Agents extends Component
 
     public function render()
     {
-        return view('livewire.tenant.agents');
+        return view('pages.tenant.agents');
     }
 }

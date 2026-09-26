@@ -18,6 +18,6 @@ class DashboardController extends Controller implements HasMiddleware
 
     public function index(): View
     {
-        return view('superadmin.dashboard');
+        return view('pages.superadmin.dashboard');
     }
 }

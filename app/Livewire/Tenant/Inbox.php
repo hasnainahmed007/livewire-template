@@ -141,7 +141,7 @@ class Inbox extends Component
 
     public function render()
     {
-        return view('livewire.tenant.inbox', [
+        return view('pages.tenant.inbox', [
             'visibleThreads' => $this->filteredThreads(),
             'activeThread' => $this->selectedThread(),
             'activeMessages' => $this->threadMessages(),

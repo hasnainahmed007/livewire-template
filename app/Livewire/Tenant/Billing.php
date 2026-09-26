@@ -23,6 +23,6 @@ class Billing extends Component
 
     public function render()
     {
-        return view('livewire.tenant.billing');
+        return view('pages.tenant.billing');
     }
 }
